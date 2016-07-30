@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FontAwesomeButton: UIButton {
+@IBDesignable class FontAwesomeButton: UIButton {
 
     @IBInspectable
     var iconCode:String = "" {
