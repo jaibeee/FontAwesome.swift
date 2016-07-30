@@ -30,6 +30,7 @@ import UIKit
     }
     
     override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
         setupViews()
     }
     
@@ -37,16 +38,16 @@ import UIKit
     /// Add a UILabel subview containing FontAwesome icon
     func setupViews(){
         self.iconView = UILabel()
+        
         // Fits icon in the view
-        iconView.font = UIFont.fontAwesomeOfSize(bounds.size.width < bounds.size.height ? bounds.size.width : bounds.size.height)
+        iconView.font = UIFont.fontAwesomeOfSize(self.titleLabel!.font.pointSize)
         iconView.textAlignment = NSTextAlignment.Center
         iconView.text = String.fontAwesomeIconWithCode(self.iconCode)
-        iconView.textColor = self.tintColor
+        iconView.textColor = self.currentTitleColor
         self.addSubview(iconView)
-    }
-    
-    override func tintColorDidChange() {
-        iconView.textColor = self.tintColor
+        
+        self.setNeedsLayout()
+        self.setNeedsDisplay()
     }
     
     override func layoutSubviews() {
